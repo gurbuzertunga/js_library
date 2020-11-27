@@ -7,6 +7,14 @@ let dropdown = document.getElementById("read");
 let dropdownValue = dropdown.options[dropdown.selectedIndex];
 let buttonValue = document.getElementById("submit");
 const formValue = document.getElementById("form");
+const getForm = document.getElementById("form-area");
+getForm.style.display = "none";
+
+const newBookBtn = document.getElementById("new-book");
+newBookBtn.addEventListener("click", () => (getForm.style.display = "block"));
+
+const closeForm = document.getElementById("close");
+closeForm.addEventListener("click", () => (getForm.style.display = "none"));
 
 formValue.addEventListener("submit", stopRefresh);
 buttonValue.addEventListener("click", addBook);
@@ -34,6 +42,7 @@ function Book(title, author, pages, read) {
 }
 
 function addBook() {
+  getForm.style.display = "none";
   let newBook = new Book(
     titleValue.value,
     authorValue.value,
@@ -49,15 +58,18 @@ function addBook() {
 }
 
 function displayBooks(book) {
-  bookWrapper.setAttribute('id', myLibrary.indexOf(book))
-  bookWrapper.textContent = book.title
-  // let p1 = document.createElement("p");
-  // let p2 = document.createElement("p");
-  // let p3 = document.createElement("p");
-  // let p4 = document.createElement("p");
-  // p1.textContent = book.title;
-  // bookWrapper.appendChild(p1);
-  // bookWrapper.appendChild(p2);
-  // bookWrapper.appendChild(p3);
-  // bookWrapper.appendChild(p4);
+  bookWrapper.setAttribute("id", myLibrary.indexOf(book));
+  let p1 = document.createElement("p");
+  let p2 = document.createElement("p");
+  let p3 = document.createElement("p");
+  let p4 = document.createElement("p");
+
+  p1.textContent = book.title;
+  bookWrapper.appendChild(p1);
+  p2.textContent = book.author;
+  bookWrapper.appendChild(p2);
+  p3.textContent = book.pages;
+  bookWrapper.appendChild(p3);
+  p4.textContent = book.read;
+  bookWrapper.appendChild(p4);
 }
