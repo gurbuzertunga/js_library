@@ -7,12 +7,9 @@ let dropdown = document.getElementById("read");
 let dropdownValue = dropdown.options[dropdown.selectedIndex];
 let buttonValue = document.getElementById("submit");
 const formValue = document.getElementById("form");
+
 formValue.addEventListener("submit", stopRefresh);
 buttonValue.addEventListener("click", addBook);
-let p1 = document.createElement("p");
-let p2 = document.createElement("p");
-let p3 = document.createElement("p");
-let p4 = document.createElement("p");
 
 function stopRefresh(e) {
   e.preventDefault();
@@ -47,14 +44,20 @@ function addBook() {
   myLibrary.push(newBook);
   // console.log(myLibrary);
   for (let i = 0; i < myLibrary.length; i++) {
-    p1.innerHTML = myLibrary[i].title;
-    p2.innerHTML = myLibrary[i].author;
-    p3.innerHTML = myLibrary[i].pages;
-    p4.innerHTML = myLibrary[i].read;
-
-    bookWrapper.appendChild(p1);
-    bookWrapper.appendChild(p2);
-    bookWrapper.appendChild(p3);
-    bookWrapper.appendChild(p4);
+    displayBooks(myLibrary[i]);
   }
+}
+
+function displayBooks(book) {
+  bookWrapper.setAttribute('id', myLibrary.indexOf(book))
+  bookWrapper.textContent = book.title
+  // let p1 = document.createElement("p");
+  // let p2 = document.createElement("p");
+  // let p3 = document.createElement("p");
+  // let p4 = document.createElement("p");
+  // p1.textContent = book.title;
+  // bookWrapper.appendChild(p1);
+  // bookWrapper.appendChild(p2);
+  // bookWrapper.appendChild(p3);
+  // bookWrapper.appendChild(p4);
 }
