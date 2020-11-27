@@ -1,14 +1,16 @@
-const titleValue = document.getElementById('title');
-const authorValue = document.getElementById('author');
-const pagesValue = document.getElementById('pages');
-const dropdownValue = document.querySelector('#read');
-const buttonValue = document.getElementById('submit');
+let myLibrary = [];
+let titleValue = document.getElementById('title');
+let authorValue = document.getElementById('author');
+let pagesValue = document.getElementById('pages');
+let dropdown = document.getElementById('read');
+let dropdownValue = dropdown.options[dropdown.selectedIndex];
+let buttonValue = document.getElementById('submit');
 const formValue = document.getElementById('form');
+formValue.addEventListener('submit', stopRefresh);
 buttonValue.addEventListener('click', addBook);
 
-function addBook() {
-  new Book.title = Book.title + titleValue.value;
-  console.log(new Book.title);
+function stopRefresh(e) {
+  e.preventDefault();
 }
 
 function Book(title, author, pages, read) {
@@ -21,5 +23,9 @@ function Book(title, author, pages, read) {
   }
 }
 
-const Lotr = new Book(formValue)
-Lotr.info ();
+function addBook() {
+  let newBook = new Book(titleValue.value, authorValue.value, pagesValue.value, dropdownValue.textContent )
+  console.log(newBook);
+  myLibrary.push(newBook);
+  console.log(myLibrary);
+}
