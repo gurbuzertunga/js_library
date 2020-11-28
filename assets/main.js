@@ -18,9 +18,14 @@ closeForm.addEventListener("click", () => (getForm.style.display = "none"));
 
 formValue.addEventListener("submit", stopRefresh);
 buttonValue.addEventListener("click", addBook);
+buttonValue.addEventListener("click", () => (getForm.style.display = "none"));
 
 function stopRefresh(e) {
   e.preventDefault();
+}
+
+function selectChange() {
+  dropdownValue = dropdown.options[dropdown.selectedIndex];
 }
 
 function Book(title, author, pages, read) {
@@ -57,6 +62,4 @@ function addBook() {
   bookWrapper.insertAdjacentHTML('afterbegin',`<li class="text-blue-500">${newBook.read}</li>`)
 }
 
-function selectChange() {
-  dropdownValue = dropdown.options[dropdown.selectedIndex];
-}
+
