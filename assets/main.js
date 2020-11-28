@@ -42,7 +42,6 @@ function Book(title, author, pages, read) {
 }
 
 function addBook() {
-  getForm.style.display = "none";
   let newBook = new Book(
     titleValue.value,
     authorValue.value,
@@ -52,24 +51,12 @@ function addBook() {
   console.log(newBook);
   myLibrary.push(newBook);
   // console.log(myLibrary);
-  for (let i = 0; i < myLibrary.length; i++) {
-    displayBooks(myLibrary[i]);
-  }
+  bookWrapper.insertAdjacentHTML('afterbegin',`<li class="text-blue-500">${newBook.title}</li>`)
+  bookWrapper.insertAdjacentHTML('afterbegin',`<li class="text-blue-500">${newBook.author}</li>`)
+  bookWrapper.insertAdjacentHTML('afterbegin',`<li class="text-blue-500">${newBook.pages}</li>`)
+  bookWrapper.insertAdjacentHTML('afterbegin',`<li class="text-blue-500">${newBook.read}</li>`)
 }
 
-function displayBooks(book) {
-  bookWrapper.setAttribute("id", myLibrary.indexOf(book));
-  let p1 = document.createElement("p");
-  let p2 = document.createElement("p");
-  let p3 = document.createElement("p");
-  let p4 = document.createElement("p");
-
-  p1.textContent = book.title;
-  bookWrapper.appendChild(p1);
-  p2.textContent = book.author;
-  bookWrapper.appendChild(p2);
-  p3.textContent = book.pages;
-  bookWrapper.appendChild(p3);
-  p4.textContent = book.read;
-  bookWrapper.appendChild(p4);
+function selectChange() {
+  dropdownValue = dropdown.options[dropdown.selectedIndex];
 }
