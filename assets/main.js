@@ -86,26 +86,20 @@ function displayBook(newBook) {
   // bookWrapper.insertAdjacentHTML('afterbegin',`<li class="text-blue-500" id="${id}">${newBook.pages}</li>`);
   // bookWrapper.insertAdjacentHTML('afterbegin',`<li class="text-blue-500" id="${id}">${newBook.author}</li>`);
   // bookWrapper.insertAdjacentHTML('afterbegin',`<li class="text-blue-500" id="${id}">${newBook.title}</li>`);
-  // removeBook(id);
-  let deleteBtn = document.getElementById('delete');
-  deleteBtn.addEventListener('click', alert('I have clicked you!!!!'));
+  // // removeBook(id);
+  // let deleteBtn = document.getElementById('delete');
+  // deleteBtn.addEventListener('click', alert('I have clicked you!!!!'));
 }
 
-function removeBook(item) {
-  child = document.getElementById('item');
-  element = myLibrary[item];
-  elementId = myLibrary.indexOf(element);
-  myLibrary.splice(elementId, 1);
-  bookWrapper.removeChild(child);
-}
-
-bookList.addEventListener('click', (e) => {
-  console.log(e.target);
-})
+bookList.addEventListener('click', function (e) {
+ deleteBook(e.target);
+});
 
 function deleteBook(el) {
   if (el.classList.contains('delete')) {
-    el.parentElement.parentElement.remove();
+    let targetElement = el.parentElement.parentElement;
+    targetElement.remove();
+    myLibrary.splice(myLibrary.indexOf(targetElement), 1);
   }
 }
 
