@@ -7,7 +7,7 @@
       href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
       rel="stylesheet"
     />
-    <title>Document</title>
+    <title>JS Library</title>
   </head>
   <body class="">
     <header>
@@ -16,7 +16,7 @@
     <button id="new-book">New Book</button>
     <div class="container" id="form-area">
       <span id="close">&times;</span>
-      <form id="form" action="" method="GET" class="flex flex-col">
+      <form id="form" class="flex flex-col">
         <label for="title">Title:</label>
         <input type="text" id="title" name="title" class="border" placeholder="Enter title">
         <label for="author">Author:</label>
@@ -28,25 +28,22 @@
           <option value="Not Read">Not Read</option>
         </select>
         <button type="submit" id="submit">Submit</button>
-        
       </form>
-        <!-- <p id="test">try me</p>
-        <label for="title">Title:</label>
-        <input type="text" id="title" name="title" class="border">
-        <button type="submit" id="submit">Submit</button> -->
     </div>
-    <table class="book-wrapper" id="books">
+    <table class="book-wrapper table-auto" id="books">
       <thead>
         <tr>
           <th>Title</th>
           <th>Author</th>
           <th>Pages</th>
           <th>Read/Not read</th>
-          <th></th>
+          <th>Delete?</th>
+          <th>Have you read it?</th>
         </tr>
       </thead>
       <tbody id="book-list"></tbody>
     </table>
+    
     <script src="assets/main.js"></script>
   </body>
 </html>
