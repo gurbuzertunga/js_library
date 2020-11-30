@@ -10,6 +10,7 @@ const getForm = document.getElementById("form-area");
 const newBookBtn = document.getElementById("new-book");
 const closeForm = document.getElementById("close");
 
+
 let dropdownValue = dropdown.options[dropdown.selectedIndex];
 let myLibrary = [];
 let id = 0;
@@ -71,19 +72,21 @@ function displayBook(newBook) {
     <td>${newBook.pages}</td>
     <td class="read" id="read">${newBook.read}</td>
     <td><a href="#" id="delete" class="delete">Delete Book</a></td>
-    <td><input type="checkbox" name="reading-check" id="reading-check"></td>
+    <td><input type="checkbox" name="checkbox" id="reading-check"></td>
     `
-    let checkBox = document.getElementById('reading-check');
-    checkBox.addEventListener('change', (e, read) => {
-      changeReadStatus(e.target, read);
+    let checkBox = document.querySelector("input[name=checkbox]");
+    checkBox.addEventListener('change', (e) => {
+      changeReadStatus(e.target);
     }); 
 }
 
-function changeReadStatus(checkbox, inputRead) {
-  if (checkbox.checked = true) {
-    inputRead.textContent = "Read";
+function changeReadStatus(checkbox) {
+  if (checkbox.checked) {
+    checkbox.checked = false;
+    console.log(checkbox.value);
   } else {
-    inputRead.textContent = "Not Read";
+    checkbox.checked = true;
+    console.log(checkbox.value);
   }
 }
 
