@@ -1,4 +1,5 @@
 let myLibrary = [];
+
 let id = 0;
 let bookWrapper = document.getElementById("books");
 let titleValue = document.getElementById("title");
@@ -7,6 +8,7 @@ let pagesValue = document.getElementById("pages");
 let dropdown = document.getElementById("read");
 let dropdownValue = dropdown.options[dropdown.selectedIndex];
 let buttonValue = document.getElementById("submit");
+let bookList = document.getElementById('book-list');
 
 const formValue = document.getElementById("form");
 const getForm = document.getElementById("form-area");
@@ -65,18 +67,35 @@ function addBook() {
 }
 
 function displayBook(newBook) {
-  bookWrapper.insertAdjacentHTML('afterbegin',`<button type="reset" id="delete">delete the book</button>`);
-  bookWrapper.insertAdjacentHTML('afterbegin',`<li class="text-blue-500" id="${id}">${newBook.read}</li>`);
-  bookWrapper.insertAdjacentHTML('afterbegin',`<li class="text-blue-500" id="${id}">${newBook.pages}</li>`);
-  bookWrapper.insertAdjacentHTML('afterbegin',`<li class="text-blue-500" id="${id}">${newBook.author}</li>`);
-  bookWrapper.insertAdjacentHTML('afterbegin',`<li class="text-blue-500" id="${id}">${newBook.title}</li>`);
+  const row = document.createElement('tr');
+  bookList.appendChild(row);
+  row.innerHTML = `
+    <td>${newBook.title}</td>
+    <td>${newBook.author}</td>
+    <td>${newBook.pages}</td>
+    <td>${newBook.read}</td>
+    <td><a href="#" id="delete">Delete Book</a></td>
+  ` 
+  
+  // const deleteBookBtn = document.createElement('button');
+  // deleteBookBtn.classList("text-blue-500");
+  // bookWrapper.appendChild(deleteBookBtn);
+  // bookWrapper.insertAdjacentHTML('afterbegin',`<li><button type="reset" id="delete">delete the book</button><li>`);
+  // bookWrapper.insertAdjacentHTML('afterbegin',`<li class="text-blue-500" id="${id}">${newBook.read}</li>`);
+  // bookWrapper.insertAdjacentHTML('afterbegin',`<li class="text-blue-500" id="${id}">${newBook.pages}</li>`);
+  // bookWrapper.insertAdjacentHTML('afterbegin',`<li class="text-blue-500" id="${id}">${newBook.author}</li>`);
+  // bookWrapper.insertAdjacentHTML('afterbegin',`<li class="text-blue-500" id="${id}">${newBook.title}</li>`);
   // removeBook(id);
+  let deleteBtn = document.getElementById('delete');
+  deleteBtn.addEventListener('click', alert('I have clicked you!!!!'));
 }
 
 function removeBook(item) {
+  child = document.getElementById('item');
   element = myLibrary[item];
   elementId = myLibrary.indexOf(element);
-  myLibrary.splice(elementId,1);
+  myLibrary.splice(elementId, 1);
+  bookWrapper.removeChild(child);
 }
 
 

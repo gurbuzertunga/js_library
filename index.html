@@ -35,7 +35,18 @@
         <input type="text" id="title" name="title" class="border">
         <button type="submit" id="submit">Submit</button> -->
     </div>
-    <ul class="book-wrapper" id="books"></ul>
+    <table class="book-wrapper" id="books">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Author</th>
+          <th>Pages</th>
+          <th>Read/Not read</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="book-list"></tbody>
+    </table>
     <script src="assets/main.js"></script>
   </body>
 </html>
