@@ -69,21 +69,22 @@ function displayBook(newBook) {
     <td>${newBook.title}</td>
     <td>${newBook.author}</td>
     <td>${newBook.pages}</td>
-    <td>${newBook.read}</td>
+    <td class="read" id="read">${newBook.read}</td>
     <td><a href="#" id="delete" class="delete">Delete Book</a></td>
     <td><input type="checkbox" name="reading-check" id="reading-check"></td>
     `
-    let a = document.getElementById('reading-check');
-    if (dropdownValue.textContent === "Read") {
-      a.setAttribute('checked',true);
-    }
-     else  {
-      a;
-    }
+    let checkBox = document.getElementById('reading-check');
+    checkBox.addEventListener('change', (e, read) => {
+      changeReadStatus(e.target, read);
+    }); 
+}
 
-    readingButton = a.addEventListener('change', e => {
-      
-    })
+function changeReadStatus(checkbox, inputRead) {
+  if (checkbox.checked = true) {
+    inputRead.textContent = "Read";
+  } else {
+    inputRead.textContent = "Not Read";
+  }
 }
 
 bookList.addEventListener('click', function (e) {
