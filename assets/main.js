@@ -24,6 +24,7 @@ const closeForm = document.getElementById("close");
 closeForm.addEventListener("click", () => (getForm.style.display = "none"));
 
 formValue.addEventListener("submit", stopRefresh);
+formValue.addEventListener("submit", clearFields());
 buttonValue.addEventListener("click", addBook);
 buttonValue.addEventListener("click", () => (getForm.style.display = "none"));
 
@@ -74,7 +75,7 @@ function displayBook(newBook) {
     <td>${newBook.author}</td>
     <td>${newBook.pages}</td>
     <td>${newBook.read}</td>
-    <td><a href="#" id="delete">Delete Book</a></td>
+    <td><a href="#" id="delete" class="delete">Delete Book</a></td>
   ` 
   
   // const deleteBookBtn = document.createElement('button');
@@ -96,6 +97,23 @@ function removeBook(item) {
   elementId = myLibrary.indexOf(element);
   myLibrary.splice(elementId, 1);
   bookWrapper.removeChild(child);
+}
+
+bookList.addEventListener('click', (e) => {
+  console.log(e.target);
+})
+
+function deleteBook(el) {
+  if (el.classList.contains('delete')) {
+    el.parentElement.parentElement.remove();
+  }
+}
+
+function clearFields() {
+  titleValue.value = '';
+  authorValue.value = '';
+  pagesValue.value = '';
+  dropdown.value = '';
 }
 
 
