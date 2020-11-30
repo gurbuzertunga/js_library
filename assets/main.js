@@ -65,22 +65,18 @@ function addBook() {
 }
 
 function displayBook(newBook) {
-
   bookWrapper.insertAdjacentHTML('afterbegin',`<button type="reset" id="delete">delete the book</button>`);
   bookWrapper.insertAdjacentHTML('afterbegin',`<li class="text-blue-500" id="${id}">${newBook.read}</li>`);
   bookWrapper.insertAdjacentHTML('afterbegin',`<li class="text-blue-500" id="${id}">${newBook.pages}</li>`);
   bookWrapper.insertAdjacentHTML('afterbegin',`<li class="text-blue-500" id="${id}">${newBook.author}</li>`);
   bookWrapper.insertAdjacentHTML('afterbegin',`<li class="text-blue-500" id="${id}">${newBook.title}</li>`);
-
-
-
-
+  // removeBook(id);
 }
 
 function removeBook(item) {
-  // let elementId = myLibrary.indexOf(item)
-  let element = document.getElementById(myLibrary.indexOf(item));
-  element.parentNode.removeChild(element);
+  element = myLibrary[item];
+  elementId = myLibrary.indexOf(element);
+  myLibrary.splice(elementId,1);
 }
 
 
