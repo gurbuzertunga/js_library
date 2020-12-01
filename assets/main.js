@@ -92,10 +92,14 @@ function displayBook(newBook) {
 function changeReadStatus(checkbox) {
   console.log(checkbox);
   let targetTd = checkbox.parentElement.previousSibling.previousSibling.previousSibling.previousSibling;
-  console.log(targetTd.textContent);
+  let parentNode = checkbox.parentElement.parentElement;
+  console.log(parentNode);
+  let refId = checkbox.id;
     if (checkbox.checked) {
+      myLibrary[refId].read = "Read"
       targetTd.textContent = "Read";
-    } else {     
+    } else {  
+      myLibrary[refId].read = "Not Read";
       targetTd.textContent = "Not Read";
     }
 }
