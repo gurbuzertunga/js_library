@@ -76,30 +76,39 @@ function displayBook(newBook) {
     <td><a href="#" id="delete" class="delete">Delete Book</a></td>
     <td><input type="checkbox" name="checkbox" id='${id}'></td>
     `
-    let checkBox = document.getElementById(id);
-    checkBox.addEventListener('click', (e) => console.log(e.target));
 
-    let checkTarget = checkBox.parentElement.parentElement;
-    console.log(checkTarget);
-    
-      // if (newBook.read.textContent = "Read") {
-      //   checkBox.checked = true;
-      // } else  if (newBook.read.textContent = "Not Read"){
-      //   checkBox.checked = false;
-      // }
-   
+      let checkBox = document.getElementById(id);
+      checkBox.addEventListener('click', (e) => console.log(e.target));
+
+ if (myLibrary[id].read === "Read") {
+  //  for (i = 0; i < myLibrary.length; i++) {
+  //    console.log(i);
+  //  }
+    if (checkBox.onclick === false) {
+   myLibrary[id].read = "Not Read"
+  }
+ } else if (checkBox.checked) {
+  myLibrary[id].read = "Read"
+ }
+  //  changeReadStatus();
 
 }
 
-function changeReadStatus(checkbox) {
+function changeReadStatus() {
   
-  // if (checkbox.checked) {
-    
-  //   console.log(checkbox.checked);
-  // } else {
-    
-  //   console.log(checkbox.checked);
-  // }
+  // let checkBox = document.getElementById(id);
+  // checkBox.addEventListener('click', (e) => console.log(e.target));
+
+  // let checkTarget = checkBox.parentElement.parentElement;
+  // console.log(checkTarget);
+   
+  //    console.log(myLibrary[0])
+   
+    // if (newBook.read.textContent = "Read") {
+    //   checkBox.checked = true;
+    // } else  if (newBook.read.textContent = "Not Read"){
+    //   checkBox.checked = false;
+    // }
 }
 
 bookList.addEventListener('click', function (e) {
