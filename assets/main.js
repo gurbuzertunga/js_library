@@ -52,6 +52,7 @@ function Book(title, author, pages, read) {
 }
 
 function addBook() {
+
   let newBook = new Book(
     titleValue.value,
     authorValue.value,
@@ -60,8 +61,10 @@ function addBook() {
   );
   console.log(newBook);
   myLibrary.push(newBook);
-  displayBook(newBook);
- 
+  if (displayBook(newBook)) {
+    id++;
+  }
+
 }
 
 function displayBook(newBook) {
@@ -72,7 +75,7 @@ function displayBook(newBook) {
     <td>${newBook.title}</td>
     <td>${newBook.author}</td>
     <td>${newBook.pages}</td>
-    <td class="read" id="read">${newBook.read}</td>
+    <td class="read" id="${id}read">${newBook.read}</td>
     <td><a href="#" id="delete" class="delete">Delete Book</a></td>
     <td><input type="checkbox" name="checkbox" id='${id}'></td>
     `
@@ -83,20 +86,23 @@ function displayBook(newBook) {
  if (myLibrary[id].read === "Read") {
     checkBox.setAttribute('checked', true);
    }
-  //  changeReadStatus();
+ 
 
 }
 
 function changeReadStatus(checkbox) {
-    let str;
+  var x = document.getElementById(id+"read"); 
     if (checkbox.checked) {
-      //  str = "This is checked";
-      myLibrary[id].read == "Not Read";
+      x.textContent = "Read";
+      myLibrary[id].read = "Read";
     } else {
-      // str = "This is not checked.";
-      myLibrary[id].read == "Read";
+      // str = false;
+      x.textContent = "Not Read";
+      myLibrary[id].read = "Not Read";
     }
-    id++;
+
+    // displayBook();
+ 
     // console.log(str);
   // let checkBox = document.getElementById(id);
   // checkBox.addEventListener('click', (e) => console.log(e.target));
