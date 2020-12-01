@@ -90,41 +90,14 @@ function displayBook(newBook) {
 }
 
 function changeReadStatus(checkbox) {
-  // var x = document.getElementById(id+"read");
-  var ch = document.getElementById(id);
-  let prevSibling = ch.previousElementSibling.previousElementSibling;
-  console.log(ch);
-  console.log(prevSibling);
-  let a = myLibrary[id];
-  let checkBoxId = myLibrary.indexOf(a);
+  console.log(checkbox);
+  let targetTd = checkbox.parentElement.previousSibling.previousSibling.previousSibling.previousSibling;
+  console.log(targetTd.textContent);
     if (checkbox.checked) {
-      x.textContent = "Read";      
-      myLibrary[checkBoxId].read = "Read";
-    } else {
-      // str = false;
-     
-      x.textContent = "Not Read";
-      myLibrary[checkBoxId].read = "Not Read";
+      targetTd.textContent = "Read";
+    } else {     
+      targetTd.textContent = "Not Read";
     }
-
-    
-  
-    // displayBook();
- 
-    // console.log(str);
-  // let checkBox = document.getElementById(id);
-  // checkBox.addEventListener('click', (e) => console.log(e.target));
-
-  // let checkTarget = checkBox.parentElement.parentElement;
-  // console.log(checkTarget);
-   
-  //    console.log(myLibrary[0])
-   
-    // if (newBook.read.textContent = "Read") {
-    //   checkBox.checked = true;
-    // } else  if (newBook.read.textContent = "Not Read"){
-    //   checkBox.checked = false;
-    // }
 }
 
 bookList.addEventListener('click', function (e) {
