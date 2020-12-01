@@ -4,12 +4,11 @@ const authorValue = document.getElementById("author");
 const pagesValue = document.getElementById("pages");
 const dropdown = document.getElementById("read");
 const buttonValue = document.getElementById("submit");
-const bookList = document.getElementById('book-list');
+const bookList = document.getElementById("book-list");
 const formValue = document.getElementById("form");
 const getForm = document.getElementById("form-area");
 const newBookBtn = document.getElementById("new-book");
 const closeForm = document.getElementById("close");
-
 
 let dropdownValue = dropdown.options[dropdown.selectedIndex];
 let myLibrary = [];
@@ -52,23 +51,19 @@ function Book(title, author, pages, read) {
 }
 
 function addBook() {
-
   let newBook = new Book(
     titleValue.value,
     authorValue.value,
     pagesValue.value,
     dropdownValue.textContent
   );
-    myLibrary.push(newBook)
-    id = myLibrary.indexOf(newBook);
-  displayBook(newBook)
-
-  
+  myLibrary.push(newBook);
+  id = myLibrary.indexOf(newBook);
+  displayBook(newBook);
 }
 
 function displayBook(newBook) {
-  
-  const row = document.createElement('tr');
+  const row = document.createElement("tr");
   bookList.appendChild(row);
   row.innerHTML = `
     <td>${newBook.title}</td>
@@ -77,39 +72,36 @@ function displayBook(newBook) {
     <td class="read" id="${id}read">${newBook.read}</td>
     <td><a href="#" id="delete" class="delete">Delete Book</a></td>
     <td><input type="checkbox" name="checkbox" id='${id}'></td>
-    `
-    
-      let checkBox = document.getElementById(id);
-      checkBox.addEventListener('click', (e) => changeReadStatus(e.target));
+    `;
 
- if (myLibrary[id].read === "Read") {
-    checkBox.setAttribute('checked', true);
-   }
-   
-  
+  let checkBox = document.getElementById(id);
+  checkBox.addEventListener("click", (e) => changeReadStatus(e.target));
+
+  if (myLibrary[id].read === "Read") {
+    checkBox.setAttribute("checked", true);
+  }
 }
 
 function changeReadStatus(checkbox) {
-  console.log(checkbox);
-  let targetTd = checkbox.parentElement.previousSibling.previousSibling.previousSibling.previousSibling;
-  let parentNode = checkbox.parentElement.parentElement;
-  console.log(parentNode);
+  let targetTd =
+    checkbox.parentElement.previousSibling.previousSibling.previousSibling
+      .previousSibling;
   let refId = checkbox.id;
-    if (checkbox.checked) {
-      myLibrary[refId].read = "Read"
-      targetTd.textContent = "Read";
-    } else {  
-      myLibrary[refId].read = "Not Read";
-      targetTd.textContent = "Not Read";
-    }
+  if (checkbox.checked) {
+    myLibrary[refId].read = "Read";
+    targetTd.textContent = "Read";
+  } else {
+    myLibrary[refId].read = "Not Read";
+    targetTd.textContent = "Not Read";
+  }
 }
 
-bookList.addEventListener('click', function (e) {
- deleteBook(e.target);
+bookList.addEventListener("click", function (e) {
+  deleteBook(e.target);
 });
 
 function deleteBook(el) {
-  if (el.classList.contains('delete')) {
+  if (el.classList.contains("delete")) {
     let targetElement = el.parentElement.parentElement;
     targetElement.remove();
     myLibrary.splice(myLibrary.indexOf(targetElement), 1);
@@ -117,10 +109,8 @@ function deleteBook(el) {
 }
 
 function clearFields() {
-  titleValue.value = '';
-  authorValue.value = '';
-  pagesValue.value = '';
-  dropdown.value = '';
+  titleValue.value = "";
+  authorValue.value = "";
+  pagesValue.value = "";
+  dropdown.value = "";
 }
-
-
