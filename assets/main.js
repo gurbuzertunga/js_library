@@ -59,12 +59,9 @@ function addBook() {
     pagesValue.value,
     dropdownValue.textContent
   );
-  console.log(newBook);
   myLibrary.push(newBook);
-  if (displayBook(newBook)) {
-    id++;
-  }
-
+  displayBook(newBook);
+  id++;
 }
 
 function displayBook(newBook) {
@@ -79,28 +76,29 @@ function displayBook(newBook) {
     <td><a href="#" id="delete" class="delete">Delete Book</a></td>
     <td><input type="checkbox" name="checkbox" id='${id}'></td>
     `
-
+   
       let checkBox = document.getElementById(id);
       checkBox.addEventListener('click', (e) => changeReadStatus(e.target));
 
  if (myLibrary[id].read === "Read") {
     checkBox.setAttribute('checked', true);
    }
- 
-
+   
+  
 }
 
 function changeReadStatus(checkbox) {
   var x = document.getElementById(id+"read"); 
     if (checkbox.checked) {
-      x.textContent = "Read";
+      x.textContent = "Read";      
       myLibrary[id].read = "Read";
     } else {
       // str = false;
+     
       x.textContent = "Not Read";
       myLibrary[id].read = "Not Read";
     }
-
+  
     // displayBook();
  
     // console.log(str);
