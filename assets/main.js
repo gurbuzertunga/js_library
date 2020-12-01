@@ -61,7 +61,7 @@ function addBook() {
   console.log(newBook);
   myLibrary.push(newBook);
   displayBook(newBook);
-  id++;
+ 
 }
 
 function displayBook(newBook) {
@@ -78,24 +78,26 @@ function displayBook(newBook) {
     `
 
       let checkBox = document.getElementById(id);
-      checkBox.addEventListener('click', (e) => console.log(e.target));
+      checkBox.addEventListener('click', (e) => changeReadStatus(e.target));
 
  if (myLibrary[id].read === "Read") {
-  //  for (i = 0; i < myLibrary.length; i++) {
-  //    console.log(i);
-  //  }
-    if (checkBox.onclick === false) {
-   myLibrary[id].read = "Not Read"
-  }
- } else if (checkBox.checked) {
-  myLibrary[id].read = "Read"
- }
+    checkBox.setAttribute('checked', true);
+   }
   //  changeReadStatus();
 
 }
 
-function changeReadStatus() {
-  
+function changeReadStatus(checkbox) {
+    let str;
+    if (checkbox.checked) {
+      //  str = "This is checked";
+      myLibrary[id].read == "Not Read";
+    } else {
+      // str = "This is not checked.";
+      myLibrary[id].read == "Read";
+    }
+    id++;
+    // console.log(str);
   // let checkBox = document.getElementById(id);
   // checkBox.addEventListener('click', (e) => console.log(e.target));
 
