@@ -90,15 +90,21 @@ function displayBook(newBook) {
 }
 
 function changeReadStatus(checkbox) {
-  var x = document.getElementById(id+"read"); 
+  // var x = document.getElementById(id+"read");
+  var ch = document.getElementById(id);
+  let prevSibling = ch.previousElementSibling.previousElementSibling;
+  console.log(ch);
+  console.log(prevSibling);
+  let a = myLibrary[id];
+  let checkBoxId = myLibrary.indexOf(a);
     if (checkbox.checked) {
       x.textContent = "Read";      
-      myLibrary[id].read = "Read";
+      myLibrary[checkBoxId].read = "Read";
     } else {
       // str = false;
      
       x.textContent = "Not Read";
-      myLibrary[id].read = "Not Read";
+      myLibrary[checkBoxId].read = "Not Read";
     }
 
     
