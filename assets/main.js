@@ -72,22 +72,34 @@ function displayBook(newBook) {
     <td>${newBook.pages}</td>
     <td class="read" id="read">${newBook.read}</td>
     <td><a href="#" id="delete" class="delete">Delete Book</a></td>
-    <td><input type="checkbox" name="checkbox" id="reading-check"></td>
+    <td><input type="checkbox" name="checkbox" id="reading-check" onchange="changeReadStatus"></td>
     `
-    let checkBox = document.querySelector("input[name=checkbox]");
+    let checkBox = document.getElementById("reading-check");
     checkBox.addEventListener('change', (e) => {
-      changeReadStatus(e.target);
+      console.log(e.target);
     }); 
+
+    let checkTarget = checkBox.parentElement.parentElement;
+    console.log(checkTarget);
+    
+      if (newBook.read = "Read") {
+        checkBox.checked = true;
+      } else {
+        checkBox.checked = false;
+      }
+   
+
 }
 
 function changeReadStatus(checkbox) {
-  if (checkbox.checked) {
-    checkbox.checked = false;
-    console.log(checkbox.value);
-  } else {
-    checkbox.checked = true;
-    console.log(checkbox.value);
-  }
+ 
+  // if (checkbox.checked) {
+    
+  //   console.log(checkbox.checked);
+  // } else {
+    
+  //   console.log(checkbox.checked);
+  // }
 }
 
 bookList.addEventListener('click', function (e) {
