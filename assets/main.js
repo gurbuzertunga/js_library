@@ -92,7 +92,6 @@ function deleteBook(el) {
 function displayFormOnClick() {
   getForm.style.display = 'block';
   newBookBtn.style.display = 'none';
-
 }
 
 function hideFormOnClick() {
