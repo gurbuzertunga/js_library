@@ -14,17 +14,12 @@ A digital book library for keeping track of your books.
 
 ![Screenshot](assets/images/screenshot.png)
 
-## Live Demo Preview
-
-![Live Demo](https://mystifying-archimedes-1c7573.netlify.app/)
-
 ## Content
 
 <a text-align="center" href="#about">About</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 <a href="#ins">Installations</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 <a href="#usage">Usage</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 <a href="#app">App</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-<a href="#tests">Testing</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 <a href="#with">Built With</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 <a href="#author">Author</a>
 
@@ -35,12 +30,12 @@ This project was a task by Microverse Inc. to build a library web application wh
 ## App Deployment
 The built app is published through Github pages <br />
 
-<b>You can see live version [here](#)</b>
+<b>You can see live version [here](https://mystifying-archimedes-1c7573.netlify.app/)</b>
 
 ## 🔧 Built with<a name = "with"></a>
 
   - [x] Vanilla Javascript
-  - [x] tailwind css classes
+  - [x] Tailwind CSS
 
 
 ## Usage <a name = "usage"></a>
