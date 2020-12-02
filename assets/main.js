@@ -11,7 +11,20 @@ const newBookBtn = document.getElementById("new-book");
 const closeForm = document.getElementById("close");
 
 let dropdownValue = dropdown.options[dropdown.selectedIndex];
-let myLibrary = [];
+let myLibrary = [
+  {
+    title: "Book One",
+    author: "Gurbuz",
+    pages: 1000,
+    read: "Read"
+  },
+  {
+    title: "100 ways to insult some one",
+    author: "Gurbuz",
+    pages: 1000,
+    read: "Not Read"
+  }
+];
 let id = 0;
 let index = 0;
 
@@ -58,11 +71,16 @@ function addBook() {
     dropdownValue.textContent
   );
   myLibrary.push(newBook);
-  id = myLibrary.indexOf(newBook);
+  
   displayBook(newBook);
 }
 
+myLibrary.forEach((book) => {
+  document.addEventListener('DOMContentLoaded', displayBook(book));
+});
+
 function displayBook(newBook) {
+  id = myLibrary.indexOf(newBook);
   const row = document.createElement("tr");
   bookList.appendChild(row);
   row.innerHTML = `
@@ -83,9 +101,8 @@ function displayBook(newBook) {
 }
 
 function changeReadStatus(checkbox) {
-  let targetTd =
-    checkbox.parentElement.previousSibling.previousSibling.previousSibling
-      .previousSibling;
+  let targetTd = checkbox.parentElement.previousElementSibling.previousElementSibling;
+  console.log(targetTd);
   let refId = checkbox.id;
   if (checkbox.checked) {
     myLibrary[refId].read = "Read";
