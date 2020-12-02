@@ -12,7 +12,7 @@ A digital book library for keeping track of your books.
 
 ## Index Page Screenshot
 
-![Screenshot](/assets/images/screenshot.png)
+![Screenshot](assets/images/screenshot.png)
 
 ## Content
 
