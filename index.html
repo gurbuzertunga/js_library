@@ -9,41 +9,46 @@
     />
     <title>JS Library</title>
   </head>
-  <body class="">
-    <header>
-      <h1 class="text-green-900">Js Library</h1>
-    </header>
-    <button id="new-book">New Book</button>
-    <div class="container" id="form-area">
-      <span id="close">&times;</span>
-      <form id="form" class="flex flex-col">
-        <label for="title">Title:</label>
-        <input type="text" id="title" name="title" class="border" placeholder="Enter title">
-        <label for="author">Author:</label>
-        <input type="text" id="author" name="author" class="border" placeholder="Enter author">
-        <label for="pages">Pages:</label>
-        <input type="number" id="pages" name="pages" class="border" placeholder="Enter number of pages">
-        <select name="read" id="read" onchange="selectChange()">
-          <option value="Read">Read</option>
-          <option value="Not Read">Not Read</option>
-        </select>
-        <button type="submit" id="submit">Submit</button>
-      </form>
-    </div>
-    <table class="book-wrapper table-auto" id="books">
+  <body class="bg-gray-700 flex flex-col align-middle">
+    <nav class="bg-gray-900 mb-4 border-2">
+      <h1 class="text-white text-xl text-center">Js Library</h1>
+    </nav>
+    
+  
+
+    <table class="book-wrapper table-auto border-gray-800 w-5/6 mx-auto" id="books">
+     
       <thead>
         <tr>
-          <th>Title</th>
-          <th>Author</th>
-          <th>Pages</th>
-          <th>Read/Not read</th>
-          <th>Delete?</th>
-          <th>Have you read it?</th>
+          <th class="text-left text-xl">Title</th>
+          <th class="text-left text-xl">Author</th>
+          <th class="text-left text-xl">Pages</th>
+          <th class="text-left text-xl">Read/Not read</th>
+          <th class="text-left text-xl">Delete?</th>
+          <th class="text-left text-xl">Have you read it?</th>
         </tr>
       </thead>
       <tbody id="book-list"></tbody>
     </table>
-    
+    <div class="container w-auto mx-auto flex flex-col align-bottom bg-gray-800 p-4 mt-5 rounded" id="form-area">
+      <p id="close" class="border bg-gray-500 rounded my-2 w-6 ml-auto text-center">&times;</p>
+      <form id="form" class="flex flex-col">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" class="border rounded p-2" placeholder="Enter title">
+        <label for="author">Author:</label>
+        <input type="text" id="author" name="author" class="border rounded p-2" placeholder="Enter author">
+        <label for="pages">Pages:</label>
+        <input type="number" id="pages" name="pages" class="border rounded p-2" placeholder="Enter number of pages">
+        <label for="read">Did you read this book?</label>
+        <select name="read" id="read" onchange="selectChange()" class="rounded p-2 bg-gray-500">
+          <option value="Read" class="text-black active:bg-gray-700">Read</option>
+          <option value="Not Read" class="text-black">Not Read</option>
+        </select>
+        <button type="submit" id="submit" class="bg-white rounded p-2 w-24 mx-auto my-5">Submit</button>
+      </form>
+     
+    </div>
+    <button id="new-book" class="bg-white rounded p-2 mt-4 w-24 mx-auto">New Book</button>
     <script src="assets/main.js"></script>
   </body>
 </html>
