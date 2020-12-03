@@ -8,20 +8,50 @@ const formValue = document.getElementById('form');
 const getForm = document.getElementById('form-area');
 const newBookBtn = document.getElementById('new-book');
 const closeForm = document.getElementById('close');
-const myLibrary = [
-  {
-    title: 'Lord of The Rings',
-    author: 'J.R.R Tolkien',
-    pages: 784,
-    read: 'Read',
-  },
-  {
-    title: 'The Dark Tower',
-    author: 'Stephen King',
-    pages: 485,
-    read: 'Not Read',
-  },
-];
+
+let books;
+
+class Store {
+  static getBooksFromStore() {
+    if(localStorage.getItem('books') === null) {
+      books = [];
+    } else {
+      books = JSON.parse(localStorage.getItem('books'));
+    }
+    return books;
+  } 
+
+  static addBookToStore(book) {
+    books = Store.getBooksFromStore();
+    books.push(book);
+    localStorage.setItem('books', JSON.stringify(books));
+  }
+
+  static removeBookFromStore(book) {
+    books = Store.getBooksFromStore();
+    books.splice(books.indexOf(book), 1);
+    localStorage.setItem('books', JSON.stringify(books))
+  }
+
+  static updateStoreElement(books) {
+    localStorage.setItem('books', JSON.stringify(books));
+  }
+}
+const myLibrary = Store.getBooksFromStore();
+// [
+//   {
+//     title: 'Lord of The Rings',
+//     author: 'J.R.R Tolkien',
+//     pages: 784,
+//     read: 'Read',
+//   },
+//   {
+//     title: 'The Dark Tower',
+//     author: 'Stephen King',
+//     pages: 485,
+//     read: 'Not Read',
+//   },
+// ];
 
 
 let id = 0;
@@ -39,9 +69,13 @@ function changeReadStatus(checkbox) {
   const refId = checkbox.id;
   if (checkbox.checked) {
     myLibrary[refId].read = 'Read';
+    books[refId].read = 'read';
+    Store.updateStoreElement(books);
     targetTd.textContent = 'Read';
   } else {
     myLibrary[refId].read = 'Not Read';
+    books[refId].read = 'Not Read';
+    Store.updateStoreElement(books);
     targetTd.textContent = 'Not Read';
   }
 }
@@ -56,7 +90,7 @@ function displayBook(newBook) {
     <td class="border border-black py-1">${newBook.author}</td>
     <td class="border border-black py-1">${newBook.pages}</td>
     <td class="read border border-black py-1" id="${id}read">${newBook.read}</td>
-    <td class="border border-black py-1 text-center"><a href="#" id="delete" class="delete bg-gray-800 px-2 py-1 rounded">Delete Book</a></td>
+    <td class="border border-black py-1 text-center"><a href="#" id="delete" class="delete bg-red-800 px-2 text-white py-1 rounded">Delete Book</a></td>
     <td class="border border-black py-1 text-center"><input class="my-auto" type="checkbox" name="checkbox" id='${id}'></td>
     `;
 
@@ -76,7 +110,7 @@ function addBook() {
     dropdownValue.textContent,
   );
   myLibrary.push(newBook);
-
+  Store.addBookToStore(newBook);
   displayBook(newBook);
 }
 
@@ -85,6 +119,7 @@ function deleteBook(el) {
   if (el.classList.contains('delete')) {
     const targetElement = el.parentElement.parentElement;
     targetElement.remove();
+    Store.removeBookFromStore(targetElement);
     myLibrary.splice(myLibrary.indexOf(targetElement), 1);
   }
 }

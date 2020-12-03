@@ -6,7 +6,7 @@ A digital book library for keeping track of your books.
   
 [![Github Issues](https://img.shields.io/badge/GitHub-Issues-orange)](https://github.com/gurbuzertunga/js_library/issues)
 [![GitHub Pull Requests](https://img.shields.io/badge/GitHub-Pull%20Requests-blue)](https://github.com/gurbuzertunga/js_library/pulls)
-[![Hireable](https://img.shields.io/badge/Hirable-Yes-orange)]
+![Hireable](https://img.shields.io/badge/Hirable-Yes-orange)
 
 </div>
 
@@ -31,7 +31,7 @@ This project was a task by Microverse Inc. to build a library web application wh
 ## App Deployment
 The built app is published through Github pages <br />
 
-<b>You can see live version [here](#)</b>
+<b>You can see live version [here](https://sad-snyder-2a00cd.netlify.app/)</b>
 
 ## 🔧 Built with<a name = "with"></a>
 

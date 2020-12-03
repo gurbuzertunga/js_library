@@ -9,7 +9,7 @@
     />
     <title>JS Library</title>
   </head>
-  <body class="bg-gray-700 flex flex-col align-middle">
+  <body class="flex flex-col align-middle">
     <nav class="bg-gray-900 mb-4 border-2">
       <h1 class="text-white text-xl text-center">Js Library</h1>
     </nav>
@@ -31,7 +31,7 @@
       <tbody id="book-list"></tbody>
     </table>
     <div class="container w-auto mx-auto flex flex-col align-bottom bg-gray-800 p-4 mt-5 rounded" id="form-area">
-      <p id="close" class="border bg-gray-500 rounded my-2 w-6 ml-auto text-center">&times;</p>
+      <p id="close" class="border bg-gray-500 rounded my-2 w-6 ml-auto text-center cursor-pointer">&times;</p>
       <form id="form" class="flex flex-col">
         <label for="title">Title:</label>
         <input type="text" id="title" name="title" class="border rounded p-2" placeholder="Enter title">
@@ -48,7 +48,7 @@
       </form>
      
     </div>
-    <button id="new-book" class="bg-white rounded p-2 mt-4 w-24 mx-auto">New Book</button>
+    <button id="new-book" class="bg-gray-800 p-2 text-white rounded mt-4 w-24 mx-auto">New Book</button>
     <script src="assets/main.js"></script>
   </body>
 </html>
