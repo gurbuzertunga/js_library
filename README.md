@@ -20,7 +20,6 @@ A digital book library for keeping track of your books.
 <a href="#ins">Installations</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 <a href="#usage">Usage</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 <a href="#app">App</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-<a href="#tests">Testing</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 <a href="#with">Built With</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 <a href="#author">Author</a>
 
@@ -36,7 +35,7 @@ The built app is published through Github pages <br />
 ## 🔧 Built with<a name = "with"></a>
 
   - [x] Vanilla Javascript
-  - [x] tailwind css classes
+  - [x] Tailwind CSS
 
 
 ## Usage <a name = "usage"></a>
@@ -57,7 +56,7 @@ First get a copy of the project on your computer:
 Once you have a local copy of the entire project on your computer,
 If you don't meet the above prerequisites, then:
 
-- Visit [node down and installations docs](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) to install node js and npm.
+- Visit [node download and installations docs](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) to install node js and npm.
 
 ###  App <a name = "app"></a>
 With the installations above complete, you are set to use the code and view the application built in this repository. Follow these simple steps:
