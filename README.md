@@ -30,7 +30,7 @@ This project was a task by Microverse Inc. to build a library web application wh
 ## App Deployment
 The built app is published through Github pages <br />
 
-<b>You can see live version [here](https://sad-snyder-2a00cd.netlify.app/)</b>
+<b>You can see live version [here](https://mystifying-archimedes-1c7573.netlify.app/)</b>
 
 ## 🔧 Built with<a name = "with"></a>
 
