@@ -8,7 +8,7 @@ const formValue = document.getElementById('form');
 const getForm = document.getElementById('form-area');
 const newBookBtn = document.getElementById('new-book');
 const closeForm = document.getElementById('close');
-
+const bookWrapper = document.getElementById('books');
 let books;
 
 class Store {
@@ -103,15 +103,25 @@ function displayBook(newBook) {
 }
 
 function addBook() {
-  const newBook = new Book(
-    titleValue.value,
-    authorValue.value,
-    pagesValue.value,
-    dropdownValue.textContent,
-  );
-  myLibrary.push(newBook);
-  Store.addBookToStore(newBook);
-  displayBook(newBook);
+  if (titleValue.value === '' || authorValue.value === '' || pagesValue.value === '') {
+    const alertMessage = document.createElement('div');
+    document.body.insertBefore(alertMessage, bookWrapper);
+    alertMessage.className = 'w-64 bg-red-800 text-white relative bottom-0 text-center text-lg mx-auto border-2 border-black rounded alert';
+    alertMessage.textContent = 'You need to fill the form!';
+    setTimeout(() => {
+      document.querySelector('.alert').remove();
+    }, 2000);
+  } else {
+    const newBook = new Book(
+      titleValue.value,
+      authorValue.value,
+      pagesValue.value,
+      dropdownValue.textContent,
+    );
+    myLibrary.push(newBook);
+    Store.addBookToStore(newBook);
+    displayBook(newBook);
+  }
 }
 
 
