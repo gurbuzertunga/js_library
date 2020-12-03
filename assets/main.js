@@ -13,13 +13,13 @@ let books;
 
 class Store {
   static getBooksFromStore() {
-    if(localStorage.getItem('books') === null) {
+    if (localStorage.getItem('books') === null) {
       books = [];
     } else {
       books = JSON.parse(localStorage.getItem('books'));
     }
     return books;
-  } 
+  }
 
   static addBookToStore(book) {
     books = Store.getBooksFromStore();
@@ -30,7 +30,7 @@ class Store {
   static removeBookFromStore(book) {
     books = Store.getBooksFromStore();
     books.splice(books.indexOf(book), 1);
-    localStorage.setItem('books', JSON.stringify(books))
+    localStorage.setItem('books', JSON.stringify(books));
   }
 
   static updateStoreElement(books) {
@@ -69,7 +69,7 @@ function changeReadStatus(checkbox) {
   const refId = checkbox.id;
   if (checkbox.checked) {
     myLibrary[refId].read = 'Read';
-    books[refId].read = 'read';
+    books[refId].read = 'Read';
     Store.updateStoreElement(books);
     targetTd.textContent = 'Read';
   } else {
