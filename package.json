@@ -1,0 +1,28 @@
+{
+  "name": "js_library",
+  "version": "1.0.0",
+  "description": "<div align=\"center\">   <h1><b>JS Library</b></h1>",
+  "main": "assets/main.js",
+  "dependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.2",
+    "firebase": "^8.1.1",
+    "install": "^0.13.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gurbuzertunga/js_library.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gurbuzertunga/js_library/issues"
+  },
+  "homepage": "https://github.com/gurbuzertunga/js_library#readme"
+}

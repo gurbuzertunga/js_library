@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/styles.css">
+    <title>JS Library</title>
+  </head>
+  <body class="flex flex-col align-middle absolute w-full">
+    <nav class="bg-gray-900 border-2">
+      <h1 class="text-white text-xl text-center">Js Library</h1>
+    </nav>
+    
+
+    <table class="book-wrapper table-auto border-gray-800 w-5/6 mx-auto" id="books">
+     
+      <thead>
+        <tr>
+          <th class="text-left text-xl">Title</th>
+          <th class="text-left text-xl">Author</th>
+          <th class="text-left text-xl">Pages</th>
+          <th class="text-left text-xl">Read/Not read</th>
+          <th class="text-left text-xl">Delete?</th>
+          <th class="text-left text-xl">Have you read it?</th>
+        </tr>
+      </thead>
+      <tbody id="book-list"></tbody>
+    </table>
+    <div class="container w-auto mx-auto flex flex-col align-bottom bg-gray-800 p-4 mt-5 rounded" id="form-area">
+      <p id="close" class="border bg-gray-500 rounded my-2 w-6 ml-auto text-center cursor-pointer">&times;</p>
+      <form id="form" class="flex flex-col">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" class="border rounded p-2" placeholder="Enter title">
+        <label for="author">Author:</label>
+        <input type="text" id="author" name="author" class="border rounded p-2" placeholder="Enter author">
+        <label for="pages">Pages:</label>
+        <input type="number" id="pages" name="pages" class="border rounded p-2" placeholder="Enter number of pages">
+        <label for="read">Did you read this book?</label>
+        <select name="read" id="read" onchange="selectChange()" class="rounded p-2 bg-gray-500">
+          <option value="Read" class="text-black active:bg-gray-700">Read</option>
+          <option value="Not Read" class="text-black">Not Read</option>
+        </select>
+        <button type="submit" id="submit" class="bg-white rounded p-2 w-24 mx-auto my-5">Submit</button>
+      </form>
+     
+    </div>
+    <button id="new-book" class="bg-gray-800 p-2 text-white rounded mt-4 w-24 mx-auto">New Book</button>
+    <script src="assets/main.js"></script>
+  </body>
+</html>
