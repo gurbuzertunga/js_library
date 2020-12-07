@@ -97,6 +97,15 @@ function displayBook(newBook) {
 }
 
 function addBook() {
+  if (titleValue.value === '' || authorValue.value === '' || pagesValue.value === '') {
+    const alertMessage = document.createElement('div');
+    document.body.insertBefore(alertMessage, bookWrapper);
+    alertMessage.className = 'w-64 bg-red-800 text-white relative bottom-0 text-center text-lg mx-auto border-2 border-black rounded alert';
+    alertMessage.textContent = 'You need to fill the form!';
+    setTimeout(() => {
+      document.querySelector('.alert').remove();
+    }, 2000);
+  } else {
   const newBook = new Book(
     titleValue.value,
     authorValue.value,
@@ -106,6 +115,7 @@ function addBook() {
   myLibrary.push(newBook);
   Store.addBookToStore(newBook);
   displayBook(newBook);
+  }
 }
 
 function deleteBook(el) {
