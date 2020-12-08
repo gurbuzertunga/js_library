@@ -79,11 +79,9 @@ const Book1 = (title1, author1, pages1, read1) => {
   const getPages = pages1;
   const getRead = read1;
   return {
-    getTitle, getAuthor, getPages, getRead
+    getTitle, getAuthor, getPages, getRead,
   };
 };
-
-console.log(titleValue.value);
 
 function changeReadStatus(checkbox) {
   const targetTd = checkbox.parentElement.previousElementSibling.previousElementSibling;
