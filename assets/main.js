@@ -34,14 +34,16 @@ const Store = (() => {
         books.splice(books.indexOf(book), 1);
         localStorage.setItem('books', JSON.stringify(books));
       }
-    })
+    });
   };
 
   const updateStoreElement = (books) => {
     localStorage.setItem('books', JSON.stringify(books));
   };
 
-  return {addBookToStore, getBooksFromStore, removeBookFromStore, updateStoreElement}
+  return { 
+    addBookToStore, getBooksFromStore, removeBookFromStore, updateStoreElement 
+  };
 })();
 
 const myLibrary = Store.getBooksFromStore();
@@ -136,7 +138,6 @@ function deleteBook(el) {
   if (el.classList.contains('delete')) {
     const targetElement = el.parentElement.parentElement;
     targetElement.remove();
-    myLibrary.splice(myLibrary.indexOf(targetElement), 1);
   }
 }
 
@@ -173,8 +174,7 @@ dropdown.addEventListener('click', selectChange);
 
 bookList.addEventListener('click', (e) => {
   deleteBook(e.target);
-  const titleRef = e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.textContent;
-  console.log(titleRef);
+  const titleRef = e.target.parentElement.parentElement.childNodes[1].textContent;
   Store.removeBookFromStore(titleRef);
 });
 
