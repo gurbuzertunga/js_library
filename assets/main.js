@@ -41,8 +41,8 @@ const Store = (() => {
     localStorage.setItem('books', JSON.stringify(books));
   };
 
-  return { 
-    addBookToStore, getBooksFromStore, removeBookFromStore, updateStoreElement 
+  return {
+    addBookToStore, getBooksFromStore, removeBookFromStore, updateStoreElement,
   };
 })();
 
@@ -66,42 +66,36 @@ const myLibrary = Store.getBooksFromStore();
 let id = 0;
 let dropdownValue = dropdown.options[dropdown.selectedIndex];
 
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
-}
+// function Book(title, author, pages, read) {
+//   this.title = title;
+//   this.author = author;
+//   this.pages = pages;
+//   this.read = read;
+// }
 
 const Book1 = (title1, author1, pages1, read1) => {
   const getTitle = title1;
   const getAuthor = author1;
   const getPages = pages1;
   const getRead = read1;
-  return {getTitle, getAuthor, getPages, getRead};
-}
+  return {
+    getTitle, getAuthor, getPages, getRead
+  };
+};
 
 console.log(titleValue.value);
-
-const book1 = Book1(titleValue.value, authorValue.value, pagesValue.value, dropdownValue.textContent);
-console.log(book1.getTitle);
-console.log(book1.getAuthor);
-console.log(book1.getPages);
-console.log(book1.getRead);
-
-console.log(book1);
 
 function changeReadStatus(checkbox) {
   const targetTd = checkbox.parentElement.previousElementSibling.previousElementSibling;
   const refId = checkbox.id;
   if (checkbox.checked) {
     myLibrary[refId].read = 'Read';
-    books[refId].read = 'Read';
+    books[refId].getRead = 'Read';
     Store.updateStoreElement(books);
     targetTd.textContent = 'Read';
   } else {
     myLibrary[refId].read = 'Not Read';
-    books[refId].read = 'Not Read';
+    books[refId].getRead = 'Not Read';
     Store.updateStoreElement(books);
     targetTd.textContent = 'Not Read';
   }
