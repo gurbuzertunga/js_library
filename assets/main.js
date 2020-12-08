@@ -11,32 +11,39 @@ const closeForm = document.getElementById('close');
 const bookWrapper = document.getElementById('books');
 let books;
 
-class Store {
-  static getBooksFromStore() {
+const Store = (() => {
+  const getBooksFromStore = () => {
     if (localStorage.getItem('books') === null) {
       books = [];
     } else {
       books = JSON.parse(localStorage.getItem('books'));
     }
     return books;
-  }
+  };
 
-  static addBookToStore(book) {
+  const addBookToStore = (book) => {
     books = Store.getBooksFromStore();
     books.push(book);
     localStorage.setItem('books', JSON.stringify(books));
-  }
+  };
 
-  static removeBookFromStore(book) {
+  const removeBookFromStore = (title) => {
     books = Store.getBooksFromStore();
-    books.splice(books.indexOf(book), 1);
-    localStorage.setItem('books', JSON.stringify(books));
-  }
+    books.forEach((book) => {
+      if (book.title === title) {
+        books.splice(books.indexOf(book), 1);
+        localStorage.setItem('books', JSON.stringify(books));
+      }
+    })
+  };
 
-  static updateStoreElement(books) {
+  const updateStoreElement = (books) => {
     localStorage.setItem('books', JSON.stringify(books));
-  }
-}
+  };
+
+  return {addBookToStore, getBooksFromStore, removeBookFromStore, updateStoreElement}
+})();
+
 const myLibrary = Store.getBooksFromStore();
 // [
 //   {
@@ -129,7 +136,6 @@ function deleteBook(el) {
   if (el.classList.contains('delete')) {
     const targetElement = el.parentElement.parentElement;
     targetElement.remove();
-    Store.removeBookFromStore(targetElement);
     myLibrary.splice(myLibrary.indexOf(targetElement), 1);
   }
 }
@@ -167,6 +173,9 @@ dropdown.addEventListener('click', selectChange);
 
 bookList.addEventListener('click', (e) => {
   deleteBook(e.target);
+  const titleRef = e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.textContent;
+  console.log(titleRef);
+  Store.removeBookFromStore(titleRef);
 });
 
 myLibrary.forEach((book) => {
