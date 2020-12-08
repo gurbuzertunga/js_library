@@ -73,6 +73,24 @@ function Book(title, author, pages, read) {
   this.read = read;
 }
 
+const Book1 = (title1, author1, pages1, read1) => {
+  const getTitle = title1;
+  const getAuthor = author1;
+  const getPages = pages1;
+  const getRead = read1;
+  return {getTitle, getAuthor, getPages, getRead};
+}
+
+console.log(titleValue.value);
+
+const book1 = Book1(titleValue.value, authorValue.value, pagesValue.value, dropdownValue.textContent);
+console.log(book1.getTitle);
+console.log(book1.getAuthor);
+console.log(book1.getPages);
+console.log(book1.getRead);
+
+console.log(book1);
+
 function changeReadStatus(checkbox) {
   const targetTd = checkbox.parentElement.previousElementSibling.previousElementSibling;
   const refId = checkbox.id;
@@ -95,10 +113,10 @@ function displayBook(newBook) {
   const row = document.createElement('tr');
   bookList.appendChild(row);
   row.innerHTML = `
-    <td class="border border-black py-1">${newBook.title}</td>
-    <td class="border border-black py-1">${newBook.author}</td>
-    <td class="border border-black py-1">${newBook.pages}</td>
-    <td class="read border border-black py-1" id="${id}read">${newBook.read}</td>
+    <td class="border border-black py-1">${newBook.getTitle}</td>
+    <td class="border border-black py-1">${newBook.getAuthor}</td>
+    <td class="border border-black py-1">${newBook.getPages}</td>
+    <td class="read border border-black py-1" id="${id}read">${newBook.getRead}</td>
     <td class="border border-black py-1 text-center"><a href="#" id="delete" class="delete bg-red-800 px-2 text-white py-1 rounded">Delete Book</a></td>
     <td class="border border-black py-1 text-center"><input class="my-auto" type="checkbox" name="checkbox" id='${id}'></td>
     `;
@@ -121,7 +139,7 @@ function addBook() {
       document.querySelector('.alert').remove();
     }, 2000);
   } else {
-    const newBook = new Book(
+    const newBook = Book1(
       titleValue.value,
       authorValue.value,
       pagesValue.value,
