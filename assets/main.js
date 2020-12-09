@@ -32,7 +32,7 @@ const Store = (() => {
     books.forEach((book) => {
       if (book.getTitle === title) {
         books.splice(books.indexOf(book), 1);
-        localStorage.setItem("books", JSON.stringify(books));
+        localStorage.setItem('books', JSON.stringify(books));
       }
     });
   };
@@ -69,8 +69,7 @@ const Book = (title, author, pages, read) => {
 
 class myMethods {
   static changeReadStatus = (checkbox) => {
-    const targetTd =
-      checkbox.parentElement.previousElementSibling.previousElementSibling;
+    const targetTd = checkbox.parentElement.previousElementSibling.previousElementSibling;
     const refId = checkbox.id;
     if (checkbox.checked) {
       books[refId].getRead = 'Read';
@@ -95,24 +94,17 @@ class myMethods {
       <td class="border border-black py-1 text-center"><a href="#" id="delete" class="delete bg-red-800 px-2 text-white py-1 rounded">Delete Book</a></td>
       <td class="border border-black py-1 text-center"><input class="my-auto" type="checkbox" name="checkbox" id='${id}'></td>
       `;
-
+      
     const checkBox = document.getElementById(id);
-    checkBox.addEventListener('click', (e) =>
-      myMethods.changeReadStatus(e.target)
-    );
-
-    if (books[id].getRead === 'Read') {
-      checkBox.setAttribute('checked', true);
+    checkBox.addEventListener('click', (e) => myMethods.changeReadStatus(e.target));
+    if (newBook.getRead === 'Read') {
+      checkBox.checked = true;
     }
   };
 }
 
 function addBook() {
-  if (
-    titleValue.value === '' ||
-    authorValue.value === '' ||
-    pagesValue.value === ''
-  ) {
+  if (titleValue.value === '' || authorValue.value === '' || pagesValue.value === '') {
     const alertMessage = document.createElement('div');
     document.body.insertBefore(alertMessage, bookWrapper);
     alertMessage.className =
@@ -122,12 +114,8 @@ function addBook() {
       document.querySelector('.alert').remove();
     }, 2000);
   } else {
-    const newBook = Book(
-      titleValue.value,
-      authorValue.value,
-      pagesValue.value,
-      dropdownValue.value
-    );
+    const newBook = Book(titleValue.value, authorValue.value, pagesValue.value, dropdownValue.value);
+    myLibrary.push(newBook);
     Store.addBookToStore(newBook);
     myMethods.displayBook(newBook);
   }
@@ -160,10 +148,6 @@ const generalFunctions = (() => {
     pagesValue.value = '';
   };
 
-  const selectChange = () => {
-    dropdownValue = dropdown.options[dropdown.selectedIndex];
-  };
-
   return {
     selectChange,
     stopRefresh,
@@ -173,6 +157,10 @@ const generalFunctions = (() => {
   };
 })();
 
+function selectChange () {
+  dropdownValue = dropdown.options[dropdown.selectedIndex];
+};
+
 getForm.style.display = 'none';
 newBookBtn.addEventListener('click', generalFunctions.displayFormOnClick);
 closeForm.addEventListener('click', generalFunctions.hideFormOnClick);
@@ -180,7 +168,7 @@ closeForm.addEventListener('click', generalFunctions.hideFormOnClick);
 formValue.addEventListener('submit', generalFunctions.stopRefresh);
 buttonValue.addEventListener('click', addBook);
 buttonValue.addEventListener('click', generalFunctions.hideFormOnClick);
-dropdown.addEventListener('onChange', generalFunctions.selectChange);
+dropdown.addEventListener('onChange', selectChange);
 
 bookList.addEventListener('click', (e) => {
   generalFunctions.deleteBook(e.target);
