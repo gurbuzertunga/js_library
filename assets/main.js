@@ -1,22 +1,22 @@
-const titleValue = document.getElementById("title");
-const authorValue = document.getElementById("author");
-const pagesValue = document.getElementById("pages");
-const dropdown = document.getElementById("read");
-const buttonValue = document.getElementById("submit");
-const bookList = document.getElementById("book-list");
-const formValue = document.getElementById("form");
-const getForm = document.getElementById("form-area");
-const newBookBtn = document.getElementById("new-book");
-const closeForm = document.getElementById("close");
-const bookWrapper = document.getElementById("books");
+const titleValue = document.getElementById('title');
+const authorValue = document.getElementById('author');
+const pagesValue = document.getElementById('pages');
+const dropdown = document.getElementById('read');
+const buttonValue = document.getElementById('submit');
+const bookList = document.getElementById('book-list');
+const formValue = document.getElementById('form');
+const getForm = document.getElementById('form-area');
+const newBookBtn = document.getElementById('new-book');
+const closeForm = document.getElementById('close');
+const bookWrapper = document.getElementById('books');
 let books;
 
 const Store = (() => {
   const getBooksFromStore = () => {
-    if (localStorage.getItem("books") === null) {
+    if (localStorage.getItem('books') === null) {
       books = [];
     } else {
-      books = JSON.parse(localStorage.getItem("books"));
+      books = JSON.parse(localStorage.getItem('books'));
     }
     return books;
   };
@@ -24,12 +24,12 @@ const Store = (() => {
   const addBookToStore = (book) => {
     books = Store.getBooksFromStore();
     books.push(book);
-    localStorage.setItem("books", JSON.stringify(books));
+    localStorage.setItem('books', JSON.stringify(books));
   };
 
   const removeBookFromStore = (title) => {
     books = Store.getBooksFromStore();
-    books.forEach((book, index) => {
+    books.forEach((book) => {
       if (book.getTitle === title) {
         books.splice(books.indexOf(book), 1);
         localStorage.setItem("books", JSON.stringify(books));
@@ -38,7 +38,7 @@ const Store = (() => {
   };
 
   const updateStoreElement = (books) => {
-    localStorage.setItem("books", JSON.stringify(books));
+    localStorage.setItem('books', JSON.stringify(books));
   };
 
   return {
@@ -73,19 +73,19 @@ class myMethods {
       checkbox.parentElement.previousElementSibling.previousElementSibling;
     const refId = checkbox.id;
     if (checkbox.checked) {
-      books[refId].getRead = "Read";
+      books[refId].getRead = 'Read';
       Store.updateStoreElement(books);
-      targetTd.textContent = "Read";
+      targetTd.textContent = 'Read';
     } else {
-      books[refId].getRead = "Not Read";
+      books[refId].getRead = 'Not Read';
       Store.updateStoreElement(books);
-      targetTd.textContent = "Not Read";
+      targetTd.textContent = 'Not Read';
     }
   };
 
   static displayBook = (newBook) => {
     id = books.indexOf(newBook);
-    const row = document.createElement("tr");
+    const row = document.createElement('tr');
     bookList.appendChild(row);
     row.innerHTML = `
       <td class="border border-black py-1">${newBook.getTitle}</td>
@@ -97,34 +97,36 @@ class myMethods {
       `;
 
     const checkBox = document.getElementById(id);
-    checkBox.addEventListener("click", (e) => myMethods.changeReadStatus(e.target));
+    checkBox.addEventListener('click', (e) =>
+      myMethods.changeReadStatus(e.target)
+    );
 
-    if (books[id].getRead === "Read") {
-      checkBox.setAttribute("checked", true);
+    if (books[id].getRead === 'Read') {
+      checkBox.setAttribute('checked', true);
     }
   };
 }
 
 function addBook() {
   if (
-    titleValue.value === "" ||
-    authorValue.value === "" ||
-    pagesValue.value === ""
+    titleValue.value === '' ||
+    authorValue.value === '' ||
+    pagesValue.value === ''
   ) {
-    const alertMessage = document.createElement("div");
+    const alertMessage = document.createElement('div');
     document.body.insertBefore(alertMessage, bookWrapper);
     alertMessage.className =
-      "w-64 bg-red-800 text-white relative bottom-0 text-center text-lg mx-auto border-2 border-black rounded alert";
-    alertMessage.textContent = "You need to fill the form!";
+      'w-64 bg-red-800 text-white relative bottom-0 text-center text-lg mx-auto border-2 border-black rounded alert';
+    alertMessage.textContent = 'You need to fill the form!';
     setTimeout(() => {
-      document.querySelector(".alert").remove();
+      document.querySelector('.alert').remove();
     }, 2000);
   } else {
     const newBook = Book(
       titleValue.value,
       authorValue.value,
       pagesValue.value,
-      dropdownValue.textContent
+      dropdownValue.value
     );
     Store.addBookToStore(newBook);
     myMethods.displayBook(newBook);
@@ -133,7 +135,7 @@ function addBook() {
 
 const generalFunctions = (() => {
   const deleteBook = (el) => {
-    if (el.classList.contains("delete")) {
+    if (el.classList.contains('delete')) {
       const targetElement = el.parentElement.parentElement;
       targetElement.remove();
       const titleRef = el.parentElement.parentElement.childNodes[1].textContent;
@@ -142,20 +144,20 @@ const generalFunctions = (() => {
   };
 
   const displayFormOnClick = () => {
-    getForm.style.display = "block";
-    newBookBtn.style.display = "none";
+    getForm.style.display = 'block';
+    newBookBtn.style.display = 'none';
   };
 
   const hideFormOnClick = () => {
-    getForm.style.display = "none";
-    newBookBtn.style.display = "block";
+    getForm.style.display = 'none';
+    newBookBtn.style.display = 'block';
   };
 
   const stopRefresh = (e) => {
     e.preventDefault();
-    titleValue.value = "";
-    authorValue.value = "";
-    pagesValue.value = "";
+    titleValue.value = '';
+    authorValue.value = '';
+    pagesValue.value = '';
   };
 
   const selectChange = () => {
@@ -171,19 +173,19 @@ const generalFunctions = (() => {
   };
 })();
 
-getForm.style.display = "none";
-newBookBtn.addEventListener("click", generalFunctions.displayFormOnClick);
-closeForm.addEventListener("click", generalFunctions.hideFormOnClick);
+getForm.style.display = 'none';
+newBookBtn.addEventListener('click', generalFunctions.displayFormOnClick);
+closeForm.addEventListener('click', generalFunctions.hideFormOnClick);
 
-formValue.addEventListener("submit", generalFunctions.stopRefresh);
-buttonValue.addEventListener("click", addBook);
-buttonValue.addEventListener("click", generalFunctions.hideFormOnClick);
-dropdown.addEventListener("click", generalFunctions.selectChange);
+formValue.addEventListener('submit', generalFunctions.stopRefresh);
+buttonValue.addEventListener('click', addBook);
+buttonValue.addEventListener('click', generalFunctions.hideFormOnClick);
+dropdown.addEventListener('onChange', generalFunctions.selectChange);
 
-bookList.addEventListener("click", (e) => {
+bookList.addEventListener('click', (e) => {
   generalFunctions.deleteBook(e.target);
 });
 
 myLibrary.forEach((book) => {
-  document.addEventListener("DOMContentLoaded", myMethods.displayBook(book));
+  document.addEventListener('DOMContentLoaded', myMethods.displayBook(book));
 });
